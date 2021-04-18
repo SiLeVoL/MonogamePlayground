@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5i2IqpKoNH43zlRI6DQ3242hzyuYTyIaAH2WdWS8TFJbKnmKUfcRi4p9qmNU+fBgMW33g7rCWoyHukYYsMea4w==",
+  "dgSpecHash": "yMovFkIcpjRAvLsMqEn5yMQMN+XqWxYdOerpNYzHxr6ezAevghcK7BipDpUauQN2L2i/b55Z1+uFKTHEEZk4ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tom\\Desktop\\git\\playgroundprojekt\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
+  "projectFilePath": "C:\\Git\\MonogamePlayground\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Tom\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
-    "C:\\Users\\Tom\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+    "C:\\Users\\silev\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\silev\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
   ],
   "logs": []
 }
