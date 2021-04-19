@@ -52,7 +52,7 @@ namespace monogame_playground.Controls {
             PenColor = Color.Black;
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             var color = Color.White;
 
             if (_isHovering) {
@@ -69,7 +69,7 @@ namespace monogame_playground.Controls {
             }
         }
 
-        public override void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime) {
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
             _isHovering = false;
