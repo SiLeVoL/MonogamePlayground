@@ -91,3 +91,4 @@ C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-play
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\obj\Debug\netcoreapp3.1\monogame-playground.pdb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\obj\Debug\netcoreapp3.1\monogame-playground.genruntimeconfig.cache
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\erro.xnb
+C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\erro.xnb
