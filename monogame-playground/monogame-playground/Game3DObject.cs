@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using monogame_playground.Gameplay;
 
@@ -12,7 +13,7 @@ namespace monogame_playground {
             _model = model;
         }
 
-        public virtual void Update(GameTime gameTime) {
+        public virtual void Update(GameTime gameTime, List<Game3DObject> entities) {
             
         }
         

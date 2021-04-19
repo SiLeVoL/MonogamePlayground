@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace monogame_playground.Gameplay {
@@ -11,10 +12,11 @@ namespace monogame_playground.Gameplay {
             _position = position;
         }
         
-        public override void Update(GameTime gameTime) {
-            base.Update(gameTime);
+        public override void Update(GameTime gameTime, List<Game3DObject> entities) {
+            base.Update(gameTime, entities);
 
             _position.Y -= .5f;
+            _position.X += (entities.Find(x => x.GetType() == typeof(Player)).Position.X - _position.X) * 0.05f;
 
             if (_position.Y < -20) {
                 _position = new Vector3(0f, 40, 0f);

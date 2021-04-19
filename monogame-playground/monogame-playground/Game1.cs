@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,7 +12,7 @@ namespace monogame_playground
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private GameState _state = GameState.MainMenu;
+        protected GameState _state = GameState.MainMenu;
         private Color _backgroundColor = Color.Black;
         private List<Component> _gameComponents;
         private List<Game3DObject> _game3DModels;
@@ -164,10 +165,17 @@ namespace monogame_playground
         private void UpdatePause(GameTime gameTime)
         {
 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Exit();
+            }
+
         }
 
         private void DrawPause(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Red);
 
         }
 
@@ -180,7 +188,7 @@ namespace monogame_playground
             
             //update Models
             foreach (var model in _game3DModels) {
-                model.Update(gameTime);
+                model.Update(gameTime, _game3DModels);
             }
 
             base.Update(gameTime);
@@ -199,7 +207,7 @@ namespace monogame_playground
         }
     }
 
-    enum GameState
+    public enum GameState
     {
         MainMenu,
         Pause,
