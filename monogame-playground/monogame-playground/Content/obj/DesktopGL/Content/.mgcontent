@@ -4,24 +4,16 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
-    <File>C:/Users/Tom/Desktop/git/playgroundprojekt/monogame-playground/monogame-playground/Content/Controls/BiggerButton.png</File>
-    <File>C:/Users/Tom/Desktop/git/playgroundprojekt/monogame-playground/monogame-playground/Content/Controls/Button.png</File>
-    <File>C:/Users/Tom/Desktop/git/playgroundprojekt/monogame-playground/monogame-playground/Content/Cube.fbx</File>
-    <File>C:/Users/Tom/Desktop/git/playgroundprojekt/monogame-playground/monogame-playground/Content/Fonts/Font.spritefont</File>
-    <File>C:/Users/Tom/Desktop/git/playgroundprojekt/monogame-playground/monogame-playground/Content/hindernis.fbx</File>
-=======
     <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Controls/BiggerButton.png</File>
     <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Controls/Button.png</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Cube.fbx</File>
     <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Fonts/Font.spritefont</File>
-    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Models/sphere.fbx</File>
->>>>>>> 530699885c98fca75d721d94d82272a5d218175b
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/hindernis.fbx</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Cube1.fbx</File>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
