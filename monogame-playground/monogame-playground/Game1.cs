@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -198,6 +199,20 @@ namespace monogame_playground
         private void DrawPlay(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
+            //sort Models according to camera distance
+            _game3DModels.Sort((x, y) => {
+                float distance = Vector3.Distance(y.Position, _camera.CamPosition) -
+                                 Vector3.Distance(x.Position, _camera.CamPosition);
+                if (distance > 0) {
+                    return 1;
+                }
+                if (distance < 0) {
+                    return -1;
+                }
+
+                return 0;
+            });
             
             //draw Models
             foreach (var model in _game3DModels) {
