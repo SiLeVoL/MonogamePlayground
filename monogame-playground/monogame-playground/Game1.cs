@@ -47,7 +47,7 @@ namespace monogame_playground
             _gameState = new GameState() { State = State.MainMenu };
             
             //Setup Camera
-            _camera = new Camera(new Vector3(0f, 0f, 0f), new Vector3(0f, -30, -20), _graphics);
+            _camera = new Camera(new Vector3(0f, 0f, 0f), new Vector3(0f, -40, -20), _graphics);
             // _worldMatrix = Matrix.CreateWorld(new Vector3(0f, 0f, 0f), Vector3.Forward, Vector3.Up);
 
             base.Initialize();
@@ -94,8 +94,8 @@ namespace monogame_playground
             
             
             // 3D Models
-            _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("erro"));
-            Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 40f, 0f));
+            _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("Sound/Lose"));
+            Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 60f, 0f), Content.Load<SoundEffect>("Sound/Arrow"));
 
             _game3DModels = new List<Game3DObject>() {
                 _player,
