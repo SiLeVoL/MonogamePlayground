@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using monogame_playground.Gameplay;
 
-namespace monogame_playground {
+namespace monogame_playground.Gameplay {
     public class Game3DObject {
         protected Model _model;
         protected Vector3 _position = new Vector3(0f, 0f, 0f);
