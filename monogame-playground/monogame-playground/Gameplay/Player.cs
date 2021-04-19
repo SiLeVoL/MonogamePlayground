@@ -30,16 +30,20 @@ namespace monogame_playground.Gameplay {
             float maxX = 20;
             float maxY = 15;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && maxX >= _position.X) {
+            if ((Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.A)) &&
+                maxX >= _position.X) {
                 _position.X += speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && -maxX <= _position.X) {
+            if ((Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D)) &&
+                -maxX <= _position.X) {
                 _position.X -= speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && maxY >= _position.Y) {
+            if ((Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.W)) &&
+                maxY >= _position.Y) {
                 _position.Y += speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && -maxY <= _position.Y ) {
+            if ((Keyboard.GetState().IsKeyDown(Keys.Down) || Keyboard.GetState().IsKeyDown(Keys.S)) &&
+                -maxY <= _position.Y) {
                 _position.Y -= speed * deltaTime;
             }
 
