@@ -31,16 +31,20 @@ namespace monogame_playground.Gameplay {
             float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
 
             // Movement
-            if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
+
+            float maxX = 20;
+            float maxY = 15;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && maxX >= _position.X) {
                 _position.X += speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
+            if (Keyboard.GetState().IsKeyDown(Keys.Right) && -maxX <= _position.X) {
                 _position.X -= speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up)) {
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && maxY >= _position.Y) {
                 _position.Y += speed * deltaTime;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down)) {
+            if (Keyboard.GetState().IsKeyDown(Keys.Down) && -maxY <= _position.Y ) {
                 _position.Y -= speed * deltaTime;
             }
 
