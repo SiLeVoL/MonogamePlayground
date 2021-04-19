@@ -5,11 +5,18 @@ using Microsoft.Xna.Framework.Graphics;
 namespace monogame_playground.Gameplay {
     public class Game3DObject {
         protected Model _model;
-        protected Vector3 _position = new Vector3(0f, 0f, 0f);
+        protected Vector3 _position = Vector3.Zero;
+        private Vector3 _startingPosition = Vector3.Zero;
         public Vector3 Position => _position;
 
-        public Game3DObject(Model model) {
+        public Game3DObject(Model model, Vector3 position) {
             _model = model;
+            _position = position;
+            _startingPosition = position;
+        }
+
+        public virtual void Reset() {
+            _position = _startingPosition;
         }
 
         public virtual void Update(GameTime gameTime, List<Game3DObject> entities, GameState gameState) {

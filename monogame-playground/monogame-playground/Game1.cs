@@ -106,7 +106,7 @@ namespace monogame_playground
             };
             
             // 3D Models
-            _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("Sound/Lose"));
+            _player = new Player(Content.Load<Model>("Models/sphere"), Vector3.Zero, Content.Load<SoundEffect>("Sound/Lose"));
             Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 60f, 0f), Content.Load<SoundEffect>("Sound/Arrow"));
 
             _game3DModels = new List<Game3DObject>() {
@@ -122,7 +122,14 @@ namespace monogame_playground
 
         private void PlayButton_Click(object sender, System.EventArgs e)
         {
+            Play();
+        }
+
+        private void Play() {
             _gameState.State = State.Play;
+            foreach (Game3DObject model in _game3DModels) {
+                model.Reset();
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -166,7 +173,7 @@ namespace monogame_playground
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                _gameState.State = State.Play;
+                Play();
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -197,18 +204,15 @@ namespace monogame_playground
         private void UpdateLooseScreen(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Enter))
-            {
-                _gameState.State = State.Play;
+                Keyboard.GetState().IsKeyDown(Keys.Enter)) {
+                Play();
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
+                Keyboard.GetState().IsKeyDown(Keys.Escape)) {
                 Exit();
             }
 
-            foreach (var component in _mainMenuComponents)
-            {
+            foreach (var component in _mainMenuComponents) {
                 component.Update(gameTime);
             }
         }
