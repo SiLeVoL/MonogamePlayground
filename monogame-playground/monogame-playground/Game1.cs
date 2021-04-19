@@ -14,18 +14,13 @@ namespace monogame_playground
         private GameState _state = GameState.MainMenu;
         private Color _backgroundColor = Color.Black;
         private List<Component> _gameComponents;
-
-        //Camera
-        private Camera _camera;
-        private Matrix worldMatrix;
+        private List<Game3DObject> _game3DModels;
 
         //Player
-        private Model playerModel;
-        private Vector3 playerPosition;
-
-        //Obstacles
-        private Model obstacle_model;
-        private Vector3 obstaclePosition;
+        private Player _player;
+        
+        //Camera
+        private Camera _camera;
 
         public Game1()
         {
@@ -43,11 +38,7 @@ namespace monogame_playground
 
             //Setup Camera
             _camera = new Camera(new Vector3(0f, 0f, 0f), new Vector3(0f, -30, -20), _graphics);
-            worldMatrix = Matrix.CreateWorld(new Vector3(0f, 0f, 0f), Vector3.Forward, Vector3.Up);
-
-            //Player
-            playerPosition = new Vector3(0f, 0f, 0f);
-            obstaclePosition = new Vector3(0f, 40, 0f);
+            // _worldMatrix = Matrix.CreateWorld(new Vector3(0f, 0f, 0f), Vector3.Forward, Vector3.Up);
 
             base.Initialize();
         }
@@ -80,10 +71,15 @@ namespace monogame_playground
                 playButton,
                 quitButton,
             };
+            
+            // 3D Models
+            _player = new Player(Content.Load<Model>("Models/sphere"));
+            Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 40f, 0f));
 
-            playerModel = Content.Load<Model>("Models/sphere");
-
-
+            _game3DModels = new List<Game3DObject>() {
+                _player,
+                obstacle
+            };
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e)
@@ -177,73 +173,28 @@ namespace monogame_playground
 
         private void UpdatePlay(GameTime gameTime)
         {
-
-            float speed = 0.3f;
-
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
-                ButtonState.Pressed || Keyboard.GetState().IsKeyDown(
-                Keys.Escape))
+                ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
                 Exit();
-            // Movement
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                playerPosition.X += speed;
-
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                playerPosition.X -= speed;
-
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                playerPosition.Y += speed;
-
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                playerPosition.Y -= speed;
-
-            }
-
-
-            obstaclePosition.Y -= +0.5f;
-
-            if (obstaclePosition.Y < playerPosition.Y - 20)
-            {
-                obstaclePosition = new Vector3(0f, 40, 0f);
+            
+            //update Models
+            foreach (var model in _game3DModels) {
+                model.Update(gameTime);
             }
 
             base.Update(gameTime);
-
         }
-
-        private void DrawModel(Model model, Matrix world, Matrix view, Matrix projection)
-        {
-
-
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-                    effect.World = world;
-                    effect.View = view;
-                    effect.Projection = projection;
-                }
-
-                mesh.Draw();
-            }
-        }
-
 
         private void DrawPlay(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            DrawModel(playerModel, Matrix.CreateTranslation(playerPosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
-            DrawModel(playerModel, Matrix.CreateTranslation(obstaclePosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
-
+            
+            //draw Models
+            foreach (var model in _game3DModels) {
+                model.Draw(gameTime, _camera);
+            }
+            
             base.Draw(gameTime);
         }
     }
