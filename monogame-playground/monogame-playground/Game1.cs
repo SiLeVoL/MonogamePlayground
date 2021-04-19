@@ -17,7 +17,8 @@ namespace monogame_playground
         private SpriteBatch _spriteBatch;
         private GameState _gameState;
         private Color _backgroundColor = Color.Black;
-        private List<Component> _gameComponents;
+        private List<Component> _mainMenuComponents;
+        private List<Component> _looseScreenComponents;
         private List<Game3DObject> _game3DModels;
         
 
@@ -56,12 +57,19 @@ namespace monogame_playground
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // Main Menu
+            var titleTextfield = new Textfield(Content.Load<SpriteFont>("Fonts/Font")) {
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 3),
+                Text = "Arrow Game",
+                FontSize = 10
+            };
+            
             var playButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
                 Content.Load<SpriteFont>("Fonts/Font"))
             {
                 Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 2),
                 Text = "Play",
-                FontSize = 2
+                ButtonSize = 2
             };
 
             playButton.Click += PlayButton_Click;
@@ -71,15 +79,19 @@ namespace monogame_playground
             {
                 Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 1.5f),
                 Text = "Quit",
-                FontSize = 2
+                ButtonSize = 2
             };
 
             quitButton.Click += QuitButton_Click;
 
-            _gameComponents = new List<Component>() {
+            _mainMenuComponents = new List<Component>() {
+                titleTextfield,
                 playButton,
                 quitButton,
             };
+            
+            // Loose Screen
+            
             
             // 3D Models
             _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("erro"));
@@ -89,11 +101,6 @@ namespace monogame_playground
                 _player,
                 obstacle
             };
-
-            
-            
-
-
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e)
@@ -155,7 +162,7 @@ namespace monogame_playground
                 Exit();
             }
 
-            foreach (var component in _gameComponents)
+            foreach (var component in _mainMenuComponents)
             {
                 component.Update(gameTime);
             }
@@ -165,9 +172,9 @@ namespace monogame_playground
         {
             GraphicsDevice.Clear(_backgroundColor);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
-            foreach (var component in _gameComponents)
+            foreach (var component in _mainMenuComponents)
             {
                 component.Draw(gameTime, _spriteBatch);
             }
@@ -189,6 +196,10 @@ namespace monogame_playground
         private void DrawPause(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Red);
+            
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+            
+            _spriteBatch.End();
         }
 
         private void UpdatePlay(GameTime gameTime)

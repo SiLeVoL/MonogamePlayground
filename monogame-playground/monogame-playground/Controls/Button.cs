@@ -13,7 +13,7 @@ namespace monogame_playground.Controls {
         private bool _isHovering;
         private Texture2D _texture;
         private Vector2 _position;
-        private float _fontSize = 1;
+        private int _buttonSize = 1;
 
         #endregion
 
@@ -24,16 +24,16 @@ namespace monogame_playground.Controls {
         public Color PenColor { get; set; }
         public Vector2 Position {
             get => _position;
-            set => _position = new Vector2(value.X - Rectangle.Width / 2, value.Y - Rectangle.Height / 2);
+            set => _position = new Vector2(value.X, value.Y);
         }
 
-        public float FontSize {
-            get => _fontSize;
-            set => _fontSize = value;
+        public int ButtonSize {
+            get => _buttonSize;
+            set =>_buttonSize = value;
         }
 
         public Rectangle Rectangle {
-            get { return new Rectangle((int) Position.X, (int) Position.Y, _texture.Width, _texture.Height); }
+            get { return new Rectangle((int) Position.X - _texture.Width * ButtonSize / 2, (int) Position.Y -_texture.Height * ButtonSize / 2, _texture.Width * ButtonSize, _texture.Height * ButtonSize); }
         }
 
         public string Text { get; set; }
@@ -52,16 +52,16 @@ namespace monogame_playground.Controls {
             var color = Color.White;
 
             if (_isHovering) {
-                color = Color.Gray;
+                color = Color.LightGray;
             }
 
             spriteBatch.Draw(_texture, Rectangle, color);
 
             if (!string.IsNullOrEmpty(Text)) {
-                var x = (Rectangle.X + (Rectangle.Width / 2)) - (_font.MeasureString(Text).X / 2 * FontSize);
-                var y = (Rectangle.Y + (Rectangle.Height / 2)) - (_font.MeasureString(Text).Y / 2 * FontSize);
+                var x = (Rectangle.X + (Rectangle.Width / 2)) - (_font.MeasureString(Text).X * ButtonSize);
+                var y = (Rectangle.Y + (Rectangle.Height / 2)) - (_font.MeasureString(Text).Y * ButtonSize);
 
-                spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColor, 0f, Vector2.Zero, Vector2.One * FontSize, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColor, 0f, Vector2.Zero, Vector2.One * 2 * ButtonSize, SpriteEffects.None, 0f);
             }
         }
 
