@@ -14,6 +14,21 @@ namespace monogame_playground
         private Color _backgroundColor = Color.Black;
         private List<Component> _gameComponents;
 
+        //Camera
+        Vector3 camTarget;
+        Vector3 camPosition;
+        Matrix projectionMatrix;
+        Matrix viewMatrix;
+        Matrix worldMatrix;
+        //Geometric info
+        Model model;
+
+        //Player
+        Vector3 playerPosition;
+        Model playermodel;
+        
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -21,13 +36,36 @@ namespace monogame_playground
             IsMouseVisible = true;
         }
 
+ 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 1080;   // set this value to the desired height of your window
+            _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-            
+
             base.Initialize();
+
+            
+
+            //Setup Camera
+            camTarget = new Vector3(0f, 0f, 0f);
+            camPosition = new Vector3(0f, -30, -20);
+            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
+                               MathHelper.ToRadians(45f), _graphics.
+                               GraphicsDevice.Viewport.AspectRatio,
+                1f, 1000f);
+            viewMatrix = Matrix.CreateLookAt(camPosition, camTarget,
+                         new Vector3(0f, 1f, 0f));// Y up
+            worldMatrix = Matrix.CreateWorld(camTarget, Vector3.
+                          Forward, Vector3.Up);
+
+            //Player
+            playerPosition = new Vector3(0f, 0f, 0f);
+
+
+
+
         }
 
         protected override void LoadContent()
@@ -36,16 +74,16 @@ namespace monogame_playground
 
             var playButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
                 Content.Load<SpriteFont>("Fonts/Font")) {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, 700),
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 4 ),
                 Text = "Play",
                 FontSize = 2
-            };
+        };
 
             playButton.Click += PlayButton_Click;
 
             var quitButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
                 Content.Load<SpriteFont>("Fonts/Font")) {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, 800),
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 3),
                 Text = "Quit",
                 FontSize = 2
             };
@@ -56,6 +94,9 @@ namespace monogame_playground
                 playButton,
                 quitButton,
             };
+
+            model = Content.Load<Model>("Cube1");
+
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e) {
@@ -136,11 +177,68 @@ namespace monogame_playground
         }
         
         private void UpdatePlay(GameTime gameTime) {
+
+            float speed = 0.3f;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
+                ButtonState.Pressed || Keyboard.GetState().IsKeyDown(
+                Keys.Escape))
+                Exit(); 
+            // Movement
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                playerPosition.X += speed;
+               
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                playerPosition.X -= speed;
+                
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                playerPosition.Y += speed;
+                
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                playerPosition.Y -= speed;
+                
+            }
             
+            worldMatrix = Matrix.CreateTranslation(playerPosition);
+            //Jumping
+
+
+
+
+
+            viewMatrix = Matrix.CreateLookAt(camPosition, camTarget,
+                         Vector3.Up);
+            base.Update(gameTime);
+
         }
 
         private void DrawPlay(GameTime gameTime) {
-            GraphicsDevice.Clear(_backgroundColor);
+            GraphicsDevice.Clear(Color.Black);
+
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.EnableDefaultLighting();
+                    effect.World = worldMatrix;
+                    effect.View = viewMatrix;
+                    effect.Projection = projectionMatrix;
+
+
+                }
+
+                mesh.Draw();
+            }
+
+            base.Draw(gameTime);
         }
     }
 
