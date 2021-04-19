@@ -15,13 +15,9 @@ namespace monogame_playground.Gameplay {
     public class Player : Game3DObject {
         private float speed = 20f;
         private float distance = 2;
-
         private SoundEffect sound;
-        
-
 
         public Player(Model model, SoundEffect s) : base(model) {
-
             sound = s;
         }
         

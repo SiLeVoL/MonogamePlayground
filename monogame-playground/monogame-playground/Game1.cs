@@ -91,7 +91,19 @@ namespace monogame_playground
             };
             
             // Loose Screen
-            
+
+            var looseTextfield = new Textfield(Content.Load<SpriteFont>("Fonts/Font")) {
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2,
+                    _graphics.GraphicsDevice.Viewport.Height / 4),
+                Text = "You Lost!",
+                FontSize = 10
+            };
+
+            _looseScreenComponents = new List<Component>() {
+                looseTextfield,
+                playButton,
+                quitButton,
+            };
             
             // 3D Models
             _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("Sound/Lose"));
@@ -121,7 +133,7 @@ namespace monogame_playground
                     UpdateMainMenu(gameTime);
                     break;
                 case State.Loose:
-                    UpdatePause(gameTime);
+                    UpdateLooseScreen(gameTime);
                     break;
                 case State.Play:
                     UpdatePlay(gameTime);
@@ -139,7 +151,7 @@ namespace monogame_playground
                     DrawMainMenu(gameTime);
                     break;
                 case State.Loose:
-                    DrawPause(gameTime);
+                    DrawLooseScreen(gameTime);
                     break;
                 case State.Play:
                     DrawPlay(gameTime);
@@ -182,22 +194,35 @@ namespace monogame_playground
             _spriteBatch.End();
         }
 
-        private void UpdatePause(GameTime gameTime)
+        private void UpdateLooseScreen(GameTime gameTime)
         {
-
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                _gameState.State = State.Play;
+            }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 Exit();
             }
 
+            foreach (var component in _mainMenuComponents)
+            {
+                component.Update(gameTime);
+            }
         }
 
-        private void DrawPause(GameTime gameTime)
+        private void DrawLooseScreen(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Red);
             
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+            
+            foreach (var component in _looseScreenComponents)
+            {
+                component.Draw(gameTime, _spriteBatch);
+            }
             
             _spriteBatch.End();
         }

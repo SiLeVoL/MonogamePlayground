@@ -4,15 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Controls/BiggerButton.png</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Controls/Button.png</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Fonts/Font.spritefont</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Models/Cube.fbx</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Models/hindernis.fbx</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Models/sphere.fbx</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Sound/Arrow.wav</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Sound/erro.wav</File>
-    <File>C:/Users/Tom/Documents/MonogamePlayground-main/monogame-playground/monogame-playground/Content/Sound/Lose.wav</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Controls/BiggerButton.png</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Controls/Button.png</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Fonts/Font.spritefont</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Models/Cube.fbx</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Models/hindernis.fbx</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Models/sphere.fbx</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Sound/Arrow.wav</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Sound/erro.wav</File>
+    <File>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Sound/Lose.wav</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

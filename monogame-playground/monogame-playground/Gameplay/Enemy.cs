@@ -5,13 +5,15 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace monogame_playground.Gameplay {
     public class Enemy : Game3DObject {
-        SoundEffect sound;
+        private SoundEffect sound;
+        private Vector3 _startingPosition;
 
         public Enemy(Model model) : base(model) {
         }
 
-        public Enemy(Model model, Vector3 position,SoundEffect s ) : base(model) {
+        public Enemy(Model model, Vector3 position, SoundEffect s) : base(model) {
             _position = position;
+            _startingPosition = position;
             sound = s;
         }
         
@@ -23,16 +25,11 @@ namespace monogame_playground.Gameplay {
             _position.Y -= 40f * deltaTime;
             _position.X += (entities.Find(x => x.GetType() == typeof(Player)).Position.X - _position.X) * 4f * deltaTime;
 
-
-           
-
-                if (_position.Y < -20) {
-                _position = new Vector3(0f, 60, 0f);
+            //
+            if (_position.Y < -20) {
+                _position = _startingPosition;
                 sound.Play();
-
             }
-
-
         }
     }
 }
