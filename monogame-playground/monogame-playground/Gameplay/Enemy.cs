@@ -12,8 +12,8 @@ namespace monogame_playground.Gameplay {
             _position = position;
         }
         
-        public override void Update(GameTime gameTime, List<Game3DObject> entities) {
-            base.Update(gameTime, entities);
+        public override void Update(GameTime gameTime, List<Game3DObject> entities, GameState gameState) {
+            base.Update(gameTime, entities, gameState);
 
             _position.Y -= .5f;
             _position.X += (entities.Find(x => x.GetType() == typeof(Player)).Position.X - _position.X) * 0.05f;

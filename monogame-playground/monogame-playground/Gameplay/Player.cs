@@ -14,8 +14,8 @@ namespace monogame_playground.Gameplay {
         public Player(Model model) : base(model) {
         }
         
-        public override void Update(GameTime gameTime, List<Game3DObject> entities) {
-            base.Update(gameTime, entities);
+        public override void Update(GameTime gameTime, List<Game3DObject> entities, GameState gameState) {
+            base.Update(gameTime, entities, gameState);
 
             // Movement
             if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
@@ -36,7 +36,7 @@ namespace monogame_playground.Gameplay {
                     enemy.Position.X - distance < _position.X &&
                     enemy.Position.Y + distance > _position.Y &&
                     enemy.Position.Y - distance < _position.Y) {
-                    // _state = GameState.Pause;
+                    gameState.State = State.Loose;
                 }
             }
         }

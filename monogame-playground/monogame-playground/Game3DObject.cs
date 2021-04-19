@@ -13,7 +13,7 @@ namespace monogame_playground {
             _model = model;
         }
 
-        public virtual void Update(GameTime gameTime, List<Game3DObject> entities) {
+        public virtual void Update(GameTime gameTime, List<Game3DObject> entities, GameState gameState) {
             
         }
         

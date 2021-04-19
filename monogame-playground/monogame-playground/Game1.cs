@@ -12,7 +12,7 @@ namespace monogame_playground
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        protected GameState _state = GameState.MainMenu;
+        private GameState _gameState;
         private Color _backgroundColor = Color.Black;
         private List<Component> _gameComponents;
         private List<Game3DObject> _game3DModels;
@@ -37,6 +37,8 @@ namespace monogame_playground
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
+            _gameState = new GameState() { State = State.MainMenu };
+            
             //Setup Camera
             _camera = new Camera(new Vector3(0f, 0f, 0f), new Vector3(0f, -30, -20), _graphics);
             // _worldMatrix = Matrix.CreateWorld(new Vector3(0f, 0f, 0f), Vector3.Forward, Vector3.Up);
@@ -90,20 +92,20 @@ namespace monogame_playground
 
         private void PlayButton_Click(object sender, System.EventArgs e)
         {
-            _state = GameState.Play;
+            _gameState.State = State.Play;
         }
 
         protected override void Update(GameTime gameTime)
         {
-            switch (_state)
+            switch (_gameState.State)
             {
-                case GameState.MainMenu:
+                case State.MainMenu:
                     UpdateMainMenu(gameTime);
                     break;
-                case GameState.Pause:
+                case State.Loose:
                     UpdatePause(gameTime);
                     break;
-                case GameState.Play:
+                case State.Play:
                     UpdatePlay(gameTime);
                     break;
             }
@@ -113,15 +115,15 @@ namespace monogame_playground
 
         protected override void Draw(GameTime gameTime)
         {
-            switch (_state)
+            switch (_gameState.State)
             {
-                case GameState.MainMenu:
+                case State.MainMenu:
                     DrawMainMenu(gameTime);
                     break;
-                case GameState.Pause:
+                case State.Loose:
                     DrawPause(gameTime);
                     break;
-                case GameState.Play:
+                case State.Play:
                     DrawPlay(gameTime);
                     break;
             }
@@ -134,7 +136,7 @@ namespace monogame_playground
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                _state = GameState.Play;
+                _gameState.State = State.Play;
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -176,7 +178,6 @@ namespace monogame_playground
         private void DrawPause(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Red);
-
         }
 
         private void UpdatePlay(GameTime gameTime)
@@ -188,7 +189,7 @@ namespace monogame_playground
             
             //update Models
             foreach (var model in _game3DModels) {
-                model.Update(gameTime, _game3DModels);
+                model.Update(gameTime, _game3DModels, _gameState);
             }
 
             base.Update(gameTime);
@@ -205,12 +206,5 @@ namespace monogame_playground
             
             base.Draw(gameTime);
         }
-    }
-
-    public enum GameState
-    {
-        MainMenu,
-        Pause,
-        Play
     }
 }
