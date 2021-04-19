@@ -54,11 +54,9 @@ C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playgrou
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube1.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\hindernis.xnb
-C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\Cube.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\hindernis.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\sphere.xnb
-C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Würfel.xnb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube.xnb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Würfel.xnb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\BiggerButton.xnb
@@ -93,6 +91,8 @@ C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-play
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\Arrow.xnb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\erro.xnb
 C:\Users\Tom\Documents\MonogamePlayground-main\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\Lose.xnb
+C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\robotAnimal.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\Arrow.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\erro.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Sound\Lose.xnb
+C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\arrow.xnb

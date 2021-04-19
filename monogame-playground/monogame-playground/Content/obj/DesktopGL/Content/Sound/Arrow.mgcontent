@@ -3,7 +3,7 @@
   <SourceFile>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/Sound/Arrow.wav</SourceFile>
   <SourceTime>2021-04-19T18:09:38.8428884+02:00</SourceTime>
   <DestFile>C:/Git/MonogamePlayground/monogame-playground/monogame-playground/Content/bin/DesktopGL/Content/Sound/Arrow.xnb</DestFile>
-  <DestTime>2021-04-19T18:11:22.8615839+02:00</DestTime>
+  <DestTime>2021-04-19T19:22:14.1766864+02:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

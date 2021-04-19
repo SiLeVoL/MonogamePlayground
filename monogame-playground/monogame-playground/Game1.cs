@@ -21,9 +21,6 @@ namespace monogame_playground
         private List<Component> _looseScreenComponents;
         private List<Game3DObject> _game3DModels;
         
-
-
-
         //Player
         private Player _player;
         
@@ -106,8 +103,8 @@ namespace monogame_playground
             };
             
             // 3D Models
-            _player = new Player(Content.Load<Model>("Models/sphere"), Vector3.Zero, Content.Load<SoundEffect>("Sound/Lose"));
-            Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 60f, 0f), Content.Load<SoundEffect>("Sound/Arrow"));
+            _player = new Player(Content.Load<Model>("Models/robotAnimal"), Vector3.Zero, Content.Load<SoundEffect>("Sound/Lose"));
+            Enemy obstacle = new Enemy(Content.Load<Model>("Models/arrow"), new Vector3(0f, 60f, -1f), Content.Load<SoundEffect>("Sound/Arrow"));
 
             _game3DModels = new List<Game3DObject>() {
                 _player,

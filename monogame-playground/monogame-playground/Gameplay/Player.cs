@@ -13,7 +13,8 @@ namespace monogame_playground.Gameplay {
 
     public class Player : Game3DObject {
         private float speed = 20f;
-        private float distance = 2;
+        private float distanceX = 1.0f;
+        private float distanceY = 2.0f;
         private SoundEffect sound;
 
         public Player(Model model, Vector3 position, SoundEffect s) : base(model, position) {
@@ -48,10 +49,10 @@ namespace monogame_playground.Gameplay {
             }
 
             foreach (Enemy enemy in entities.FindAll(x => x.GetType() == typeof(Enemy))) {
-                if (enemy.Position.X + distance > _position.X &&
-                    enemy.Position.X - distance < _position.X &&
-                    enemy.Position.Y + distance > _position.Y &&
-                    enemy.Position.Y - distance < _position.Y) {
+                if (enemy.Position.X + distanceX > _position.X &&
+                    enemy.Position.X - distanceX < _position.X &&
+                    enemy.Position.Y + distanceY > _position.Y &&
+                    enemy.Position.Y - distanceY < _position.Y) {
 
                     sound.Play();
                     gameState.State = State.Loose;
