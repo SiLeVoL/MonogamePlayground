@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework;
 
 namespace monogame_playground.Gameplay {
     
-    public class Player : Model {
-        private Model _player;
+    public class Player : ModelObject {
+        private ModelObject _player;
         public Player Instance => this;
 
-        public Player(Model playerModel) {
+        public Player(ModelObject playerModel) {
             _player = playerModel;
         }
     }

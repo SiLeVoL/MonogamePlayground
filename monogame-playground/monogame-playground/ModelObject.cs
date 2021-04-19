@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 
 namespace monogame_playground {
-    public class Model {
+    public class ModelObject {
         public void Draw(GameTime gameTime) {
             
         }
