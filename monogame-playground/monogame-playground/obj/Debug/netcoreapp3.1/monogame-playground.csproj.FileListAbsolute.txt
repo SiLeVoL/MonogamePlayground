@@ -24,3 +24,4 @@ C:\Git\MonogamePlayground\monogame-playground\monogame-playground\obj\Debug\netc
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\BiggerButton.xnb
+C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\sphere.xnb
