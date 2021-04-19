@@ -59,7 +59,7 @@ namespace monogame_playground
 
             // Main Menu
             var titleTextfield = new Textfield(Content.Load<SpriteFont>("Fonts/Font")) {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 3),
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 4),
                 Text = "Arrow Game",
                 FontSize = 10
             };
