@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using monogame_playground.Controls;
+using monogame_playground.Gameplay;
 
 namespace monogame_playground
 {
@@ -15,22 +16,16 @@ namespace monogame_playground
         private List<Component> _gameComponents;
 
         //Camera
-        Vector3 camTarget;
-        Vector3 camPosition;
-        Matrix projectionMatrix;
-        Matrix viewMatrix;
-        Matrix worldMatrix;
-        //Geometric info
-        Model model;
+        private Camera _camera;
+        private Matrix worldMatrix;
 
         //Player
-        Vector3 playerPosition;
+        private Model playerModel;
+        private Vector3 playerPosition;
 
-        //Hindernisse
-        Model hinderniss_model;
-        Vector3 hindernisPosition;
-
-
+        //Obstacles
+        private Model obstacle_model;
+        private Vector3 obstaclePosition;
 
         public Game1()
         {
@@ -39,7 +34,6 @@ namespace monogame_playground
             IsMouseVisible = true;
         }
 
-
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
@@ -47,29 +41,15 @@ namespace monogame_playground
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-            base.Initialize();
-
-
-
             //Setup Camera
-            camTarget = new Vector3(0f, 0f, 0f);
-            camPosition = new Vector3(0f, -30, -20);
-            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
-                               MathHelper.ToRadians(45f), _graphics.
-                               GraphicsDevice.Viewport.AspectRatio,
-                1f, 1000f);
-            viewMatrix = Matrix.CreateLookAt(camPosition, camTarget,
-                         new Vector3(0f, 1f, 0f));// Y up
-            worldMatrix = Matrix.CreateWorld(camTarget, Vector3.
-                          Forward, Vector3.Up);
+            _camera = new Camera(new Vector3(0f, 0f, 0f), new Vector3(0f, -30, -20), _graphics);
+            worldMatrix = Matrix.CreateWorld(new Vector3(0f, 0f, 0f), Vector3.Forward, Vector3.Up);
 
             //Player
             playerPosition = new Vector3(0f, 0f, 0f);
-            hindernisPosition = new Vector3(0f, 40, 0f);
+            obstaclePosition = new Vector3(0f, 40, 0f);
 
-
-
-
+            base.Initialize();
         }
 
         protected override void LoadContent()
@@ -79,7 +59,7 @@ namespace monogame_playground
             var playButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
                 Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 4),
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 2),
                 Text = "Play",
                 FontSize = 2
             };
@@ -89,7 +69,7 @@ namespace monogame_playground
             var quitButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
                 Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 3),
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 1.5f),
                 Text = "Quit",
                 FontSize = 2
             };
@@ -101,7 +81,7 @@ namespace monogame_playground
                 quitButton,
             };
 
-            model = Content.Load<Model>("Models/sphere");
+            playerModel = Content.Load<Model>("Models/sphere");
 
 
         }
@@ -227,11 +207,11 @@ namespace monogame_playground
             }
 
 
-            hindernisPosition.Y -= +0.5f;
+            obstaclePosition.Y -= +0.5f;
 
-            if (hindernisPosition.Y < playerPosition.Y - 20)
+            if (obstaclePosition.Y < playerPosition.Y - 20)
             {
-                hindernisPosition = new Vector3(0f, 40, 0f);
+                obstaclePosition = new Vector3(0f, 40, 0f);
             }
 
             base.Update(gameTime);
@@ -261,9 +241,8 @@ namespace monogame_playground
         {
             GraphicsDevice.Clear(Color.Black);
 
-            DrawModel(model, Matrix.CreateTranslation(playerPosition), viewMatrix, projectionMatrix);
-            DrawModel(model, Matrix.CreateTranslation(hindernisPosition), viewMatrix, projectionMatrix);
-
+            DrawModel(playerModel, Matrix.CreateTranslation(playerPosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
+            DrawModel(playerModel, Matrix.CreateTranslation(obstaclePosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
 
             base.Draw(gameTime);
         }
