@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using monogame_playground.Controls;
 using monogame_playground.Gameplay;
+using Microsoft.Xna.Framework.Audio;
+
 
 namespace monogame_playground
 {
@@ -17,6 +19,9 @@ namespace monogame_playground
         private Color _backgroundColor = Color.Black;
         private List<Component> _gameComponents;
         private List<Game3DObject> _game3DModels;
+        
+
+
 
         //Player
         private Player _player;
@@ -77,13 +82,18 @@ namespace monogame_playground
             };
             
             // 3D Models
-            _player = new Player(Content.Load<Model>("Models/sphere"));
+            _player = new Player(Content.Load<Model>("Models/sphere"), Content.Load<SoundEffect>("erro"));
             Enemy obstacle = new Enemy(Content.Load<Model>("Models/Cube"), new Vector3(0f, 40f, 0f));
 
             _game3DModels = new List<Game3DObject>() {
                 _player,
                 obstacle
             };
+
+            
+            
+
+
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e)

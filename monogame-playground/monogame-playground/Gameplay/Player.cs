@@ -5,13 +5,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using Microsoft.Xna.Framework.Audio;
+
+
+
 namespace monogame_playground.Gameplay {
+
     
     public class Player : Game3DObject {
         private float speed = 20f;
         private float distance = 2;
 
-        public Player(Model model) : base(model) {
+        private SoundEffect sound;
+        
+
+
+        public Player(Model model, SoundEffect s) : base(model) {
+
+            sound = s;
         }
         
         public override void Update(GameTime gameTime, List<Game3DObject> entities, GameState gameState) {
@@ -38,6 +49,8 @@ namespace monogame_playground.Gameplay {
                     enemy.Position.X - distance < _position.X &&
                     enemy.Position.Y + distance > _position.Y &&
                     enemy.Position.Y - distance < _position.Y) {
+
+                    sound.Play();
                     gameState.State = State.Loose;
                 }
             }
