@@ -174,24 +174,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\silev\\.nuget\\packages\\": {}
+    "C:\\Users\\Tom\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MonogamePlayground\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
+      "projectUniqueName": "C:\\Users\\Tom\\Documents\\MonogamePlayground-main\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
       "projectName": "monogame-playground",
-      "projectPath": "C:\\Git\\MonogamePlayground\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
-      "packagesPath": "C:\\Users\\silev\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MonogamePlayground\\monogame-playground\\monogame-playground\\obj\\",
+      "projectPath": "C:\\Users\\Tom\\Documents\\MonogamePlayground-main\\monogame-playground\\monogame-playground\\monogame-playground.csproj",
+      "packagesPath": "C:\\Users\\Tom\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tom\\Documents\\MonogamePlayground-main\\monogame-playground\\monogame-playground\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\silev\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Tom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
