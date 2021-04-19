@@ -82,7 +82,7 @@ namespace monogame_playground
             };
 
             playerModel = Content.Load<Model>("Models/sphere");
-
+            obstacle_model = Content.Load<Model>("Models/hindernis");
 
         }
 
@@ -168,10 +168,17 @@ namespace monogame_playground
         private void UpdatePause(GameTime gameTime)
         {
 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Exit();
+            }
+
         }
 
         private void DrawPause(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Red);
 
         }
 
@@ -214,6 +221,16 @@ namespace monogame_playground
                 obstaclePosition = new Vector3(0f, 40, 0f);
             }
 
+            obstaclePosition.X += (playerPosition.X - obstaclePosition.X) * 0.05f;
+
+
+            float distance = 2;
+            if (obstaclePosition.X+ distance > playerPosition.X && obstaclePosition.X - distance < playerPosition.X && obstaclePosition.Y + distance > playerPosition.Y && obstaclePosition.Y - distance < playerPosition.Y)
+            {
+                _state = GameState.Pause;
+            }
+
+
             base.Update(gameTime);
 
         }
@@ -242,7 +259,7 @@ namespace monogame_playground
             GraphicsDevice.Clear(Color.Black);
 
             DrawModel(playerModel, Matrix.CreateTranslation(playerPosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
-            DrawModel(playerModel, Matrix.CreateTranslation(obstaclePosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
+            DrawModel(obstacle_model, Matrix.CreateTranslation(obstaclePosition), _camera.ViewMatrix, _camera.ProjectionMatrix);
 
             base.Draw(gameTime);
         }
