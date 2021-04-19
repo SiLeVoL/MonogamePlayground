@@ -24,6 +24,7 @@ C:\Git\MonogamePlayground\monogame-playground\monogame-playground\obj\Debug\netc
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\BiggerButton.xnb
+<<<<<<< HEAD
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\BiggerButton.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
@@ -54,3 +55,6 @@ C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playgrou
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube1.xnb
 C:\Users\Tom\Desktop\git\playgroundprojekt\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\hindernis.xnb
+=======
+C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\sphere.xnb
+>>>>>>> 530699885c98fca75d721d94d82272a5d218175b

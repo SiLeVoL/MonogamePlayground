@@ -63,7 +63,11 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Font.spritefont
 
+<<<<<<< HEAD
 #begin hindernis.fbx
+=======
+#begin Models/sphere.fbx
+>>>>>>> 530699885c98fca75d721d94d82272a5d218175b
 /importer:FbxImporter
 /processor:ModelProcessor
 /processorParam:ColorKeyColor=0,0,0,0
@@ -80,5 +84,9 @@
 /processorParam:Scale=1
 /processorParam:SwapWindingOrder=False
 /processorParam:TextureFormat=Compressed
+<<<<<<< HEAD
 /build:hindernis.fbx
+=======
+/build:Models/sphere.fbx
+>>>>>>> 530699885c98fca75d721d94d82272a5d218175b
 
