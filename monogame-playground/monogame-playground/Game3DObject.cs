@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using monogame_playground.Gameplay;
 
+
 namespace monogame_playground {
     public class Game3DObject {
         protected Model _model;
