@@ -25,8 +25,11 @@ namespace monogame_playground
 
         //Player
         Vector3 playerPosition;
-        Model playermodel;
-        
+
+        //Hindernisse
+        Model hinderniss_model;
+        Vector3 hindernisPosition;
+
 
 
         public Game1()
@@ -36,7 +39,7 @@ namespace monogame_playground
             IsMouseVisible = true;
         }
 
- 
+
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
@@ -46,7 +49,7 @@ namespace monogame_playground
 
             base.Initialize();
 
-            
+
 
             //Setup Camera
             camTarget = new Vector3(0f, 0f, 0f);
@@ -62,6 +65,7 @@ namespace monogame_playground
 
             //Player
             playerPosition = new Vector3(0f, 0f, 0f);
+            hindernisPosition = new Vector3(0f, 40, 0f);
 
 
 
@@ -73,16 +77,18 @@ namespace monogame_playground
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             var playButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
-                Content.Load<SpriteFont>("Fonts/Font")) {
-                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 4 ),
+                Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 4),
                 Text = "Play",
                 FontSize = 2
-        };
+            };
 
             playButton.Click += PlayButton_Click;
 
             var quitButton = new Button(Content.Load<Texture2D>("Controls/BiggerButton"),
-                Content.Load<SpriteFont>("Fonts/Font")) {
+                Content.Load<SpriteFont>("Fonts/Font"))
+            {
                 Position = new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Width / 3),
                 Text = "Quit",
                 FontSize = 2
@@ -97,19 +103,23 @@ namespace monogame_playground
 
             model = Content.Load<Model>("Models/sphere");
 
+
         }
 
-        private void QuitButton_Click(object sender, System.EventArgs e) {
+        private void QuitButton_Click(object sender, System.EventArgs e)
+        {
             Exit();
         }
 
-        private void PlayButton_Click(object sender, System.EventArgs e) {
+        private void PlayButton_Click(object sender, System.EventArgs e)
+        {
             _state = GameState.Play;
         }
 
         protected override void Update(GameTime gameTime)
         {
-            switch (_state) {
+            switch (_state)
+            {
                 case GameState.MainMenu:
                     UpdateMainMenu(gameTime);
                     break;
@@ -126,7 +136,8 @@ namespace monogame_playground
 
         protected override void Draw(GameTime gameTime)
         {
-            switch (_state) {
+            switch (_state)
+            {
                 case GameState.MainMenu:
                     DrawMainMenu(gameTime);
                     break;
@@ -141,86 +152,94 @@ namespace monogame_playground
             base.Draw(gameTime);
         }
 
-        private void UpdateMainMenu(GameTime gameTime) {
+        private void UpdateMainMenu(GameTime gameTime)
+        {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Enter)) {
+                Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
                 _state = GameState.Play;
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
             }
-            
-            foreach (var component in _gameComponents) {
+
+            foreach (var component in _gameComponents)
+            {
                 component.Update(gameTime);
             }
         }
 
-        private void DrawMainMenu(GameTime gameTime) {
+        private void DrawMainMenu(GameTime gameTime)
+        {
             GraphicsDevice.Clear(_backgroundColor);
 
             _spriteBatch.Begin();
-            
-            foreach (var component in _gameComponents) {
+
+            foreach (var component in _gameComponents)
+            {
                 component.Draw(gameTime, _spriteBatch);
             }
-            
+
             _spriteBatch.End();
         }
-        
-        private void UpdatePause(GameTime gameTime) {
-            
+
+        private void UpdatePause(GameTime gameTime)
+        {
+
         }
 
-        private void DrawPause(GameTime gameTime) {
-            
+        private void DrawPause(GameTime gameTime)
+        {
+
         }
-        
-        private void UpdatePlay(GameTime gameTime) {
+
+        private void UpdatePlay(GameTime gameTime)
+        {
 
             float speed = 0.3f;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
                 ButtonState.Pressed || Keyboard.GetState().IsKeyDown(
                 Keys.Escape))
-                Exit(); 
+                Exit();
             // Movement
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 playerPosition.X += speed;
-               
+
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 playerPosition.X -= speed;
-                
+
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 playerPosition.Y += speed;
-                
+
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
                 playerPosition.Y -= speed;
-                
+
             }
-            
-            worldMatrix = Matrix.CreateTranslation(playerPosition);
-            //Jumping
 
 
+            hindernisPosition.Y -= +0.5f;
 
+            if (hindernisPosition.Y < playerPosition.Y - 20)
+            {
+                hindernisPosition = new Vector3(0f, 40, 0f);
+            }
 
-
-            viewMatrix = Matrix.CreateLookAt(camPosition, camTarget,
-                         Vector3.Up);
             base.Update(gameTime);
 
         }
 
-        private void DrawPlay(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.Black);
+        private void DrawModel(Model model, Matrix world, Matrix view, Matrix projection)
+        {
 
 
             foreach (ModelMesh mesh in model.Meshes)
@@ -228,21 +247,30 @@ namespace monogame_playground
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = worldMatrix;
-                    effect.View = viewMatrix;
-                    effect.Projection = projectionMatrix;
-
-
+                    effect.World = world;
+                    effect.View = view;
+                    effect.Projection = projection;
                 }
 
                 mesh.Draw();
             }
+        }
+
+
+        private void DrawPlay(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            DrawModel(model, Matrix.CreateTranslation(playerPosition), viewMatrix, projectionMatrix);
+            DrawModel(model, Matrix.CreateTranslation(hindernisPosition), viewMatrix, projectionMatrix);
+
 
             base.Draw(gameTime);
         }
     }
 
-    enum GameState {
+    enum GameState
+    {
         MainMenu,
         Pause,
         Play
