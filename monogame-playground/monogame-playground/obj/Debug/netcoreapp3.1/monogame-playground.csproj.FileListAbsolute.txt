@@ -59,5 +59,3 @@ C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netc
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\hindernis.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Models\sphere.xnb
 C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Würfel.xnb
-C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\Cube1.xnb
-C:\Git\MonogamePlayground\monogame-playground\monogame-playground\bin\Debug\netcoreapp3.1\Content\hindernis.xnb

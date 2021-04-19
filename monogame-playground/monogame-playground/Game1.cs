@@ -95,7 +95,7 @@ namespace monogame_playground
                 quitButton,
             };
 
-            model = Content.Load<Model>("Cube1");
+            model = Content.Load<Model>("Models/sphere");
 
         }
 
